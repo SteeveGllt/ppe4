@@ -18,7 +18,7 @@
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
 </head>
 
-<body>
+<body class="test">
     <div class="wrapper">
         <div class="sidebar" data-image="{{asset('/img/sidebar-5.jpg')}}">
             <!--
@@ -36,33 +36,27 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
-                            <p>Accueil</p>
+                            <p class="colortextmenu">Accueil</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./user.html">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Boite de réception</p>
+                            <p class="colortextmenu">Boite de réception</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./user.html">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Ajouter une offre</p>
+                            <p class="colortextmenu">Ajouter une offre</p>
                         </a>
-                    </li>                  
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Favoris</p>
-                        </a>
-                    </li>                                 
+                    </li>                                
                 </ul>
             </div>
         </div>
         <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+            <nav class="navbar navbar-expand-lg colorperso" color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#pablo">Template</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,37 +126,25 @@
             
           
             <div class="content">
-                <div class="container-fluid">
-                    <div class="section">
+                <div class="container-fluid ">
+                    <div class="section ">
                     @section('content')
-                    <div class="card">
-  <div class="card-header">
-    Nom offre
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>Description offre</p>
-      <footer class="blockquote-footer">Entreprise</footer>
-    </blockquote>
-  </div>
-</div>
-                    @show
+                    <div class="card colorpersocard">
+                        <div class="card-header">
+                            Nom offre
+                        </div>
+                    <div class="card-body colorpersocard">
+                        <blockquote class="blockquote mb-0">
+                            <p>Description offre</p>
+                            <footer class="blockquote-footer">Entreprise</footer>
+                        </blockquote>
                     </div>
                 </div>
-            </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
+                    @show
                 </div>
-            </footer>
+                </div>
+            </div>
+            
             
         </div>
     </div>
@@ -246,6 +228,21 @@
     </div>
 </div>
  -->
+ <style>
+.test{
+    background-color: #A9FF33;
+}
+.colorperso{
+    background-color: #FA6AF1;
+}
+.colorpersocard{
+    background-color: tomato;
+}
+.colortextmenu{
+    color: aqua;
+}
+
+ </style>
 </body>
 <!--   Core JS Files   -->
 <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
