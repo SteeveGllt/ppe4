@@ -14,11 +14,11 @@ class Poste extends Model
     {
         return $this->belongsToMany('App\User');
     }
-    public function categories()
+    public function categorie()
     {
         return $this->belongsTo('App\Categorie');
     }
-    public function types ()
+    public function type()
     {
         return $this->belongsTo('App\Type');
     }
