@@ -8,6 +8,22 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function messagesEnvoyer()
+    {
+        return $this->hasMany('App\Message');
+    }
+     public function messagesRecevoir()
+    {
+        return $this->belongsToMany('App\Message');
+    }
+    public function postesProposer()
+    {
+        return $this->hasMany('App\Poste');
+    }
+    public function postesPostuler()
+    {
+        return $this->belongsTomany('App\Poste');
+    }
     use Notifiable;
 
     /**
