@@ -16,9 +16,9 @@ class PosteSeeder extends Seeder
     {
         DB::table('postes')->insert ([
             'intitule' => "test",
-            'description' => "Tu fais du dev",
+            'description' => "Tu fais du pain",
             'ville' => "Y",
-            'nomEntreprise' => "Pro Gray",
+            'nomEntreprise' => "Je sais plus",
             'pdf' => "pdf emploi",
             'isValide' => 1,
             'type_id' => Type::all()->find(3)->id,
