@@ -51,7 +51,13 @@
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Ajouter une offre</p>
                         </a>
-                    </li>                                
+                    </li>   
+                    <li>
+                        <a class="nav-link" href="{{route('user.index')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Gérer utilisateurs</p>
+                        </a>
+                    </li> 
                 </ul>
             </div>
         </div>
