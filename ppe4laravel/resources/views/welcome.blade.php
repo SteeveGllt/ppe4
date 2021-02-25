@@ -18,7 +18,7 @@
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
 </head>
 
-<body class="test">
+<body>
     <div class="wrapper">
         <div class="sidebar" data-image="{{asset('/img/sidebar-5.jpg')}}">
             <!--
@@ -36,19 +36,19 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
-                            <p class="colortextmenu">Accueil</p>
+                            <p>Accueil</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./user.html">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p class="colortextmenu">Boite de réception</p>
+                            <p>Boite de réception</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./user.html">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p class="colortextmenu">Ajouter une offre</p>
+                            <p>Ajouter une offre</p>
                         </a>
                     </li>                                
                 </ul>
@@ -129,7 +129,7 @@
                 <div class="container-fluid ">
                     <div class="section ">
                     @section('content')
-                    <div class="card colorpersocard">
+                    <div class="card">
                         <div class="card-header">
                             Nom offre
                         </div>
@@ -228,21 +228,7 @@
     </div>
 </div>
  -->
- <style>
-.test{
-    background-color: #A9FF33;
-}
-.colorperso{
-    background-color: #FA6AF1;
-}
-.colorpersocard{
-    background-color: tomato;
-}
-.colortextmenu{
-    color: aqua;
-}
 
- </style>
 </body>
 <!--   Core JS Files   -->
 <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
