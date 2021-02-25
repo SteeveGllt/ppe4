@@ -16,6 +16,7 @@
     <link href="{{asset('/css/light-bootstrap-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -125,27 +126,17 @@
             
             
           
-            <div class="content">
-                <div class="container-fluid ">
-                    <div class="section ">
+        <div class="content">
+            <div class="container-fluid ">
+                <div class="section ">
                     @section('content')
-                    <div class="card">
-                        <div class="card-header">
-                            Nom offre
-                        </div>
-                    <div class="card-body colorpersocard">
-                        <blockquote class="blockquote mb-0">
-                            <p>Description offre</p>
-                            <footer class="blockquote-footer">Entreprise</footer>
-                        </blockquote>
-                    </div>
-                </div>
+                    
+                   
+                
                     @show
                 </div>
-                </div>
             </div>
-            
-            
+        </div>
         </div>
     </div>
     

@@ -15,10 +15,10 @@ class PosteSeeder extends Seeder
     public function run()
     {
         DB::table('postes')->insert ([
-            'intitule' => "Chef de projet",
+            'intitule' => "test",
             'description' => "Tu fais du dev",
             'ville' => "Y",
-            'nomEntreprise' => "Croc'Emploi",
+            'nomEntreprise' => "Pro Gray",
             'pdf' => "pdf emploi",
             'isValide' => 1,
             'type_id' => Type::all()->find(3)->id,
