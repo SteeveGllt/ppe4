@@ -41,7 +41,20 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $p = new Poste;
+        $p->intitule = $request->input('intitule');
+        $p->description = $request->input('description');
+        $p->ville = $request->input('ville');
+        $p->nomEntreprise = $request->input('nomEntreprise');
+        $p->pdf = "pdf emploi";
+        $p->isValide = 1;
+        $p->type_id = 1;
+        $p->categorie_id = 1;
+        $p->user_id = Auth::user()->id;
+        $p->save();
+        return redirect('/');
+        
     }
 
     /**
