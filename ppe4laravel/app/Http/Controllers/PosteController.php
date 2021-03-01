@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Poste;
 use App\Type;
 use App\Categorie;
+use Auth;
 use Illuminate\Http\Request;
 
 class PosteController extends Controller
@@ -49,11 +50,11 @@ class PosteController extends Controller
         $p->nomEntreprise = $request->input('nomEntreprise');
         $p->pdf = "pdf emploi";
         $p->isValide = 1;
-        $p->type_id = 1;
-        $p->categorie_id = 1;
+        $p->type_id = $request->input('type');
+        $p->categorie_id = $request->input('categorie');
         $p->user_id = Auth::user()->id;
         $p->save();
-        return redirect('/');
+        return redirect()->route('poste.index');
         
     }
 
