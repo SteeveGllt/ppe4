@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Poste;
 use App\Type;
-use App\Categorie;
 use Illuminate\Http\Request;
 
-class PosteController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class PosteController extends Controller
      */
     public function index()
     {
-        $tab = Poste::all();
-        return view('accueil', compact('tab'));
+        $tab = Type::all();
+        return view('PosteCreate', compact('tab'));
     }
 
     /**
@@ -27,10 +25,7 @@ class PosteController extends Controller
      */
     public function create()
     {
-        $tab = Type::all();
-        $categorie = Categorie::all();
-        return view('PosteCreate', compact('tab', 'categorie'));
-        
+        //
     }
 
     /**
@@ -47,10 +42,10 @@ class PosteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Poste  $poste
+     * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Poste $poste)
+    public function show(Type $type)
     {
         //
     }
@@ -58,10 +53,10 @@ class PosteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Poste  $poste
+     * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poste $poste)
+    public function edit(Type $type)
     {
         //
     }
@@ -70,10 +65,10 @@ class PosteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Poste  $poste
+     * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poste $poste)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -81,10 +76,10 @@ class PosteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Poste  $poste
+     * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poste $poste)
+    public function destroy(Type $type)
     {
         //
     }

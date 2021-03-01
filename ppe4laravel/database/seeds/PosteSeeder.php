@@ -18,7 +18,7 @@ class PosteSeeder extends Seeder
             'intitule' => "test",
             'description' => "Tu fais du pain",
             'ville' => "Y",
-            'nomEntreprise' => "Je sais plus",
+            'nomEntreprise' => "Yousk",
             'pdf' => "pdf emploi",
             'isValide' => 1,
             'type_id' => Type::all()->find(3)->id,

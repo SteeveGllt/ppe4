@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', ('PosteController@index'));
 Route::resource('poste', 'PosteController');
+Route::resource('type', 'TypeController');
 
 Route::resource('user','UserController');
