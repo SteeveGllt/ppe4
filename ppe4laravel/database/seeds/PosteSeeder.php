@@ -15,8 +15,8 @@ class PosteSeeder extends Seeder
     public function run()
     {
         DB::table('postes')->insert ([
-            'intitule' => "test",
-            'description' => "Tu fais du pain",
+            'intitule' => "Chef de projet",
+            'description' => "Tu fais du dev",
             'ville' => "Y",
             'nomEntreprise' => "Yousk",
             'pdf' => "pdf emploi",
