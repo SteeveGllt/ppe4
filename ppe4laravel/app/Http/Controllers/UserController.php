@@ -17,7 +17,7 @@ class UserController extends Controller
         $u= new User;
         $tab=User::all();
         return view ('UserListe',compact('tab'));
-    }
+    }  
 
     /**
      * Show the form for creating a new resource.

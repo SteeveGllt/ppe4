@@ -18,3 +18,5 @@ Route::get('/', ('PosteController@index'));
 Route::resource('poste', 'PosteController');
 
 Route::resource('user','UserController');
+
+Route::resource('categorie','CategorieController');
