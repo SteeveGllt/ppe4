@@ -1,23 +1,26 @@
 @extends('welcome')
 @section('content')
+
 <div class="leading-loose flex justify-center">
+{!! Form::open(['url' => route('poste.store'),'method' => 'post', 'class' => 'w-75  p-10 bg-white rounded shadow-xl ']) !!}
+
   <form class="w-75  p-10 bg-white rounded shadow-xl">
     <p class="text-gray-800 font-bold">Publication d'un poste</p>
     <div class="">
       <label class="block text-sm text-gray-00" for="cus_name">Nom de l'entreprise</label>
-      <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name" type="text" required="" placeholder="Nom">
+      <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="nomEntreprise" type="text" placeholder="Nom">
     </div>
     <div class="mt-2">
       <label class="block text-sm block text-gray-600" for="cus_email">City</label>
-      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="City" aria-label="Email">
+      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="ville" type="text" required="" placeholder="City" aria-label="Email">
     </div>
     <div class="mt-2">
       <label class="block text-sm text-gray-600" for="cus_email">Intitulé du poste</label>
-      <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="Intitulé">
+      <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" name="intitule" type="text" required="" placeholder="Intitulé">
     </div>
     <div class="mt-2">
       <label class=" block text-sm text-gray-600" for="cus_email">Description</label>
-      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="Description"></textarea>
+      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="description" type="text" required="" placeholder="Description"></textarea>
     </div>
     <div>
     <p class="text-gray-800 font-bold">Catégorie</p>
@@ -29,7 +32,7 @@
                 <input id="" name="categorie" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                 <label for="" class="ml-3 block text-sm font-medium text-gray-700">{{$ligne->libelle}}</label>
             </div>
-        </div>
+        </div>   
     @endforeach
     </fieldset>
     <div>
@@ -50,5 +53,5 @@
     </div>
   </form>
 </div>
-            
+{!! Form::close() !!}
 @stop

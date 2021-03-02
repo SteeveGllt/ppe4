@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Poste;
 use App\Type;
 use App\Categorie;
+use Auth;
 use Illuminate\Http\Request;
 
 class PosteController extends Controller
@@ -41,7 +42,20 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $p = new Poste;
+        $p->intitule = $request->input('intitule');
+        $p->description = $request->input('description');
+        $p->ville = $request->input('ville');
+        $p->nomEntreprise = $request->input('nomEntreprise');
+        $p->pdf = "pdf emploi";
+        $p->isValide = 1;
+        $p->type_id = $request->input('type');
+        $p->categorie_id = $request->input('categorie');
+        $p->user_id = Auth::user()->id;
+        $p->save();
+        return redirect()->route('poste.index');
+        
     }
 
     /**
