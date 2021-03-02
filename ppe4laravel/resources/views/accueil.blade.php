@@ -20,7 +20,7 @@
             
         </div>
         <div class="mt-2">
-            <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">{{$ligne->nomEntreprise}}</a>
+            <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">{{$ligne->nomEntreprise}} / {{$ligne->categorie->libelle}} / {{$ligne->type->libelle}}</a>
             <p class="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita
                 dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus
                 nihil quis facere in modi ratione libero!</p>

@@ -6,7 +6,7 @@
     </svg>
 </button>
 
-        <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans">
+       <div class="mt-3 flex justify-center">
             <div class="w-full lg:w-5/6">
                 <div class="bg-white shadow-md rounded">
                     <table class="min-w-max w-full table-auto">
@@ -74,11 +74,11 @@
                                         </a>
                                         </div>
                                         <div class="w-4 mr-2 transform hover:scale-110">  
-                                        <form id ="test" action="{{route('user.destroy',['user'=>$ligne])}}" method="POST">
+                                        <form id ="test{{$ligne->id}}" action="{{route('user.destroy',['user'=>$ligne->id])}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         </form>
-                                        <a href='#' onclick='document.getElementById("test").submit()' class="hover:text-red-500">
+                                        <a href="#" onclick='document.getElementById("test{{$ligne->id}}").submit()' class="hover:text-red-500">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-<a href="{{route('user.create')}}"><button type="submit" class="btn btn-primary" name="btnCreate">Créer</button></a>
+<a href="{{route('user.create')}}" class="flex justify-center mt-3"><button type="submit" class="btn btn-primary" name="btnCreate">Créer</button></a>
 
 <!-- component
 <table class="table table-hover">

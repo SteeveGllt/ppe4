@@ -29,7 +29,7 @@
     @foreach($categorie as $ligne)
         <div class="mt-2 space-y-4">
             <div class="flex items-center">
-                <input id="" name="categorie" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                <input id="" name="categorie" type="radio" value="{{$ligne->id}}" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                 <label for="" class="ml-3 block text-sm font-medium text-gray-700">{{$ligne->libelle}}</label>
             </div>
         </div>   
@@ -42,7 +42,7 @@
     @foreach($tab as $ligne)
         <div class="mt-2 space-y-4">
             <div class="flex items-center">
-                <input id="" name="type" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                <input id="" name="type" type="radio" value="{{$ligne->id}}"  class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                 <label for="" class="ml-3 block text-sm font-medium text-gray-700">{{$ligne->libelle}}</label>
             </div>
         </div>
