@@ -77,7 +77,10 @@ class PosteController extends Controller
      */
     public function edit(Poste $poste)
     {
-        //
+        $p = Poste::find($poste->id);
+        $tab = Type::all();
+        $categorie = Categorie::all();
+        return view('PosteEdit', compact('p', 'tab', 'categorie'));
     }
 
     /**
@@ -89,7 +92,15 @@ class PosteController extends Controller
      */
     public function update(Request $request, Poste $poste)
     {
-        //
+        $p = Poste::find($poste->id);
+        $p->intitule = $request->input('intitule');
+        $p->description = $request->input('description');
+        $p->nomEntreprise = $request->input('nomEntreprise');
+        $p->ville = $request->input('ville');
+        $p->type_id = $request->input('type');
+        $p->categorie_id = $request->input('categorie');
+        $p->save();
+        return redirect()->route('poste.index');
     }
 
     /**
@@ -100,6 +111,8 @@ class PosteController extends Controller
      */
     public function destroy(Poste $poste)
     {
-        //
+        $p = Poste::find($poste->id);
+        $p->delete($p);
+        return redirect()->route('poste.index');
     }
 }
