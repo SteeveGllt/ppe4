@@ -16,10 +16,14 @@
     <link href="{{asset('/css/light-bootstrap-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+     <script src="{{asset('/js/vicopo.js')}}"></script>
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
+                       
+
     <div class="wrapper">
         <div class="sidebar" data-image="{{asset('/img/sidebar-5.jpg')}}">
             <!--
@@ -125,11 +129,21 @@
                                     <a class="dropdown-item" href="#">Separated link</a>
                                 </div>
                             </li>-->
+                            @if(Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Déconnexion</span>
+                            <form name="form" action="{{route('logout')}}" method="POST">
+                                @csrf 
+                                <button type="submit" class="btn">Se déconnecter</button>
+                            </form>
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('login')}}">
+                                    <span class="no-icon">Se connecter</span>
                                 </a>
                             </li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>
@@ -138,17 +152,27 @@
             
             
           
-        <div class="content">
-            <div class="container-fluid ">
-                <div class="section ">
+            <div class="content">
+                <div class="container-fluid ">
+                    <div class="section ">
                     @section('content')
-                    
-                   
-                
+                    <div class="card">
+                        <div class="card-header">
+                            Nom offre
+                        </div>
+                    <div class="card-body colorpersocard">
+                        <blockquote class="blockquote mb-0">
+                            <p>Description offre</p>
+                            <footer class="blockquote-footer">Entreprise</footer>
+                        </blockquote>
+                    </div>
+                </div>
                     @show
                 </div>
+                </div>
             </div>
-        </div>
+            
+            
         </div>
     </div>
     
