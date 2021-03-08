@@ -150,7 +150,20 @@
             </nav>
             <!-- End Navbar -->
             
-            
+            @if(request()->session()->get('success'))
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{request()->session()->get('success')}}
+        </div>
+      
+      @endif
+       @if(request()->session()->get('error'))
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{request()->session()->get('error')}}
+        </div>
+      
+      @endif
           
             <div class="content">
                 <div class="container-fluid ">
