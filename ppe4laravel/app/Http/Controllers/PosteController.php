@@ -7,6 +7,8 @@ use App\Type;
 use App\Categorie;
 use Auth;
 use Illuminate\Http\Request;
+use Validator;
+use Storage;
 
 class PosteController extends Controller
 {
@@ -42,20 +44,46 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $p = new Poste;
-        $p->intitule = $request->input('intitule');
-        $p->description = $request->input('description');
-        $p->ville = $request->input('ville');
-        $p->nomEntreprise = $request->input('nomEntreprise');
-        $p->pdf = "pdf emploi";
-        $p->isValide = 1;
-        $p->type_id = $request->input('type');
-        $p->categorie_id = $request->input('categorie');
-        $p->user_id = Auth::user()->id;
-        $p->save();
-        return redirect()->route('poste.index');
-        
+        if($request->hasFile('profile_image'))
+        {
+
+            $path = Storage::putFile('public/profile_images', $request->file('profile_image'));
+            $path = $request->file('profile_image')->getClientOriginalName();
+
+
+            $p = new Poste;
+            $p->intitule = $request->input('intitule');
+            $p->description = $request->input('description');
+            $p->ville = $request->input('ville');
+            $p->nomEntreprise = $request->input('nomEntreprise');
+            $p->pdf = $path;
+            $p->isValide = 1;
+            $p->type_id = $request->input('type');
+            $p->categorie_id = $request->input('categorie');
+            $p->user_id = Auth::user()->id;
+            $p->save();
+      
+            return redirect()->route('poste.index')->with('success', "Poste publié.");
+        }
+        else
+        {
+
+
+            $p = new Poste;
+            $p->intitule = $request->input('intitule');
+            $p->description = $request->input('description');
+            $p->ville = $request->input('ville');
+            $p->nomEntreprise = $request->input('nomEntreprise');
+            $p->pdf = "";
+            $p->isValide = 1;
+            $p->type_id = $request->input('type');
+            $p->categorie_id = $request->input('categorie');
+            $p->user_id = Auth::user()->id;
+            $p->save();
+      
+            return redirect()->route('poste.index')->with('success', "Poste publié.");
+        }
+
     }
 
     /**
@@ -81,6 +109,7 @@ class PosteController extends Controller
         $tab = Type::all();
         $categorie = Categorie::all();
         return view('PosteEdit', compact('p', 'tab', 'categorie'));
+    
     }
 
     /**
@@ -114,5 +143,12 @@ class PosteController extends Controller
         $p = Poste::find($poste->id);
         $p->delete($p);
         return redirect()->route('poste.index');
+    }
+    public function createThumbnail($path, $width, $height)
+    {
+        $img = Image::make($path)->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->save($path);
     }
 }

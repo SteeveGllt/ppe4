@@ -2,13 +2,16 @@
 @section('content')
 
 <div class="leading-loose flex justify-center">
-{!! Form::open(['url' => route('poste.store'),'method' => 'post', 'class' => 'w-75  p-10 bg-white rounded shadow-xl ']) !!}
+{!! Form::open(['url' => route('poste.store'),'method' => 'post', 'class' => 'w-75  p-10 bg-white rounded shadow-xl ', 'enctype' => 'multipart/form-data']) !!}
 
-  <form class="w-75  p-10 bg-white rounded shadow-xl">
+
     <p class="text-gray-800 font-bold">Publication d'un poste</p>
     <div class="">
       <label class="block text-sm text-gray-00" for="cus_name">Nom de l'entreprise</label>
       <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="nomEntreprise" type="text" placeholder="Nom">
+      @error('nom')
+        <div class="alert alert-danger"> {{ $message }} </div>
+      @enderror
     </div>
     <div class="mt-2">
       <label class="block text-sm block text-gray-600" for="cus_email">City</label>
@@ -48,19 +51,18 @@
         </div>
     @endforeach
     </fieldset>
-    <div class="flex h-screen items-center justify-center bg-grey-lighter">
-      <label class="w-15 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray">
-        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-        </svg>
-        <span class="mt-2 text-base leading-normal">Select a file</span>
-        <input type='file' class="hidden" />
-      </label>
+    <form action="{{ route('poste.store') }}" method="post" enctype="multipart/form-data">
+    <div class="flex items-center justify-center bg-grey-lighter">
+    <div class="form-group">
+        <label  class="block text-sm block text-gray-600" for="exampleInputFile">File input</label>
+        <input class="px-2 py-2 text-gray-700 rounded" type="file" name="profile_image" id="exampleInputFile">
+    </div>
+    {{ csrf_field() }}
     </div>
     <div class="mt-4">
       <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Publier</button>
     </div>
-  </form>
+
 </div>
 {!! Form::close() !!}
 @stop
