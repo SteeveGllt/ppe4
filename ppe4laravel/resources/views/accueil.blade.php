@@ -2,7 +2,7 @@
 @section('content')
 @foreach($tab as $ligne)
 <div class="flex justify-center ">
-    <div class="max-w-5xl px-10 my-3 pt-4 bg-white rounded-lg shadow-md  2xl:max-w-7xl">
+    <div class="max-w-5xl px-10 my-3 pt-4 bg-white rounded-lg shadow-md 2xl:max-w-7xl">
     
         <div class="flex justify-between items-center ">
             <span class="font-light text-gray-600">mar 10, 2019</span>
