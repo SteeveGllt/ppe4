@@ -39,7 +39,7 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="{{route('poste.index')}}">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
                             <p>Accueil</p>
                         </a>
