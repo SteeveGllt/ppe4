@@ -82,9 +82,17 @@ class UserController extends Controller
      */
     public function destroy(User $user, Request $request)
     {
+        try 
+        {
         $u =User::find($user->id); 
-          $u->delete();
-          $request->session()->flash('result','User supprimée');
-           return redirect()->route('user.index');
+        $u->delete();
+        $request->session()->flash('success','User supprimée');
+        return redirect()->route('user.index');
+        }
+        catch(\PDOException $u)
+        {
+        $request->session()->flash('error','L utilisateur ne peut être supprimé, des messages ou postes lui sont attribués');
+        return redirect()->route('user.index');
+        }
     }
 }

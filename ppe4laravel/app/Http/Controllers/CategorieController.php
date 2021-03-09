@@ -46,7 +46,8 @@ class CategorieController extends Controller
         $c = new Categorie;
         $c -> libelle = $request -> input('libelle');
         $c->save();
-         return redirect()->route('categorie.index');
+        $request->session()->flash('success','Catégorie créée');
+        return redirect()->route('categorie.index');
         }
         
 
@@ -97,10 +98,18 @@ class CategorieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Categorie $categorie, Request $request)
-    {
-        $c =Categorie::find($categorie->id); 
-        $c->delete();
-        $request->session()->flash('result','Catégorie supprimée');
-        return redirect()->route('categorie.index');
+    {  
+        try
+        {
+            $c =Categorie::find($categorie->id); 
+            $c->delete();
+            $request->session()->flash('success','Catégorie supprimée');
+            return redirect()->route('categorie.index');
+        }
+         catch(\PDOException $c) 
+        {
+           $request->session()->flash('error','La catégorie est utilisée dans un ou plusieurs postes');
+           return redirect()->route('categorie.index'); 
+        }
     }
 }

@@ -15,7 +15,7 @@ class TypeController extends Controller
     public function index()
     {
         $tab = Type::all();
-        return view('PosteCreate', compact('tab'));
+        return view('TypeListe', compact('tab'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('TypeCreate');
     }
 
     /**
@@ -36,41 +36,58 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $validatedData = $request->validate([ 
+
+        'libelle' => 'required' //Le nom est obligatoire             
+
+    ]); 
+         
+        $t = new Type;
+        $t->libelle = $request -> input('libelle');
+        $t->save();
+        $request->session()->flash('success','Type créée');
+         return redirect()->route('type.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  \App\Type  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show($id)
     {
-        //
+        $t=Type::find($id); 
+        return view('TypeShow', compact('t'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Type  $type
+     * @param  \App\Type  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit($id)
     {
-        //
+        
+        $t =Type::find($id);     
+        return view ('TypeEdit', compact('t'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Type  $type
+     * @param  \App\Type  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, $id)
     {
-        //
+        $t=Type::find($id);
+        $t -> libelle = $request -> input('libelle');
+        $t->save();
+        return redirect()->route('type.index');  
     }
 
     /**
@@ -79,8 +96,19 @@ class TypeController extends Controller
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Type $type, Request $request)
     {
-        //
+        try
+        {
+            $t =Type::find($type->id); 
+            $t->delete();
+            $request->session()->flash('success','Type supprimée');
+            return redirect()->route('type.index');
+        }
+       catch(\PDOException $t) 
+        {
+            $request->session()->flash('error','Le type est utilisée dans un ou plusieurs postes');
+            return redirect()->route('type.index');
+        }
     }
 }
