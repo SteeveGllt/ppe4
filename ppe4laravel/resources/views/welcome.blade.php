@@ -40,7 +40,7 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link" href="{{route('poste.index')}}">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
                             <p>Accueil</p>
                         </a>
@@ -61,6 +61,18 @@
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer utilisateurs</p>
+                        </a>
+                    </li> 
+                     <li>
+                        <a class="nav-link" href="{{route('type.index')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Gérer types</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{route('categorie.index')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Gérer catégories</p>
                         </a>
                     </li> 
                 </ul>
@@ -145,7 +157,20 @@
             </nav>
             <!-- End Navbar -->
             
-            
+            @if(request()->session()->get('success'))
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{request()->session()->get('success')}}
+        </div>
+      
+      @endif
+       @if(request()->session()->get('error'))
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{request()->session()->get('error')}}
+        </div>
+      
+      @endif
           
             <div class="content">
                 <div class="container-fluid ">
@@ -166,9 +191,10 @@
                 </div>
                 </div>
             </div>
-            
-            
+      
+      
         </div>
+       
     </div>
     
     <!--   -->
