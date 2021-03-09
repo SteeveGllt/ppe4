@@ -62,6 +62,12 @@
                             <p>Gérer utilisateurs</p>
                         </a>
                     </li> 
+                     <li>
+                        <a class="nav-link" href="{{route('type.index')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Gérer types</p>
+                        </a>
+                    </li>
                     <li>
                         <a class="nav-link" href="{{route('categorie.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
@@ -184,9 +190,10 @@
                 </div>
                 </div>
             </div>
-            
-            
+      
+      
         </div>
+       
     </div>
     
     <!--   -->
