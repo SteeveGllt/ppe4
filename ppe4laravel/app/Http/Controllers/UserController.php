@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +38,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $user= new User;
+       $user->nom=$request->input('name');
+       $user->prenom=$request->input('prenom');
+       $user->email = $request->input('email');
+       $user->cp=$request->input('cp');
+       $user->ville=$request->input('ville');
+       if($request->input('password')!=$request->input('confirm-password'))
+       {
+           $request->session()->flash('error','Les mots de passe de correspondent pas');
+           return redirect()->route('register');
+       }
+       $user->password=Hash::make($request->input('password'));
+       if($request->has('notifications'))
+       {
+           $user->notif=1;
+           $user->save();
+           
+       }
+       else
+       {
+           $user->notif=0;
+           $user->save();
+       }
     }
 
     /**

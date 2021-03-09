@@ -18,6 +18,7 @@
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script src="{{asset('/js/vicopo.js')}}"></script>
+     <script src="{{asset('/js/validate.min.js')}}"></script>
      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
