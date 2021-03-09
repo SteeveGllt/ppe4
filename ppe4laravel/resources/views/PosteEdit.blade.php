@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="leading-loose flex justify-center">
-{!! Form::open(['url' => route('poste.update', $p), 'class' => 'w-75  p-10 bg-white rounded shadow-xl ']) !!}
+{!! Form::open(['url' => route('poste.update', $p), 'class' => 'w-75  p-10 bg-white rounded shadow-xl ', 'enctype' => 'multipart/form-data']) !!}
 @method('put')
 
   <form class="w-75  p-10 bg-white rounded shadow-xl">
@@ -21,7 +21,7 @@
     </div>
     <div class="mt-2">
       <label class=" block text-sm text-gray-600" for="cus_email">Description</label>
-      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="description" type="text" required="" placeholder="Description" value="{{$p->description}}"></textarea>
+      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="description" type="text" required="" placeholder="Description" value="">{{$p->description}}</textarea>
     </div>
     <div>
     <p class="text-gray-800 font-bold">Catégorie</p>
@@ -49,6 +49,13 @@
         </div>
     @endforeach
     </fieldset>
+       
+    <div class="mt-2">
+        <label class=" block text-sm text-gray-600" for="cus_email">Upload</label>
+        <input class="px-2 py-2 text-gray-700 rounded" type="file" name="profile_image" id="exampleInputFile">
+    </div>
+    {{ csrf_field() }}
+
     <div class="mt-4">
       <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Modifier</button>
     </div>

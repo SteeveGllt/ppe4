@@ -5,7 +5,7 @@
     <div class="lg:w-9/12 px-10 my-3 pt-4 bg-white rounded-lg shadow-md  2xl:max-w-7xl">
 
         <div class="flex justify-between items-center">
-            <span class="font-light text-gray-600">mar 10, 2019</span>
+            <span class="font-light text-gray-600">{{ $ligne->created_at->format('d/m/Y H:m')}}</span>
 
             <div class="flex justify-center">
             <a href="{{route('poste.edit', $ligne)}}">       
@@ -32,6 +32,18 @@
             <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">{{$ligne->nomEntreprise}} / {{$ligne->categorie->libelle}} / {{$ligne->type->libelle}}</a>
             <p class="mt-2 text-gray-600">{{$ligne->description}}</p>
         </div>
+        @if($ligne->pdf == true)
+        
+        <a href="{{asset('storage/profile_images/'.$ligne->pdf)}}" download>
+        <button class="bg-grey-light hover:bg-grey text-grey-darkest font-bold py-2 px-1 rounded inline-flex items-center">
+            
+            <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+            <span>Download</span>
+            
+        </button>
+        </a>
+        @endif
+
         <div class="flex justify-between items-center mt-4"></div>
     </div>
 </div>
