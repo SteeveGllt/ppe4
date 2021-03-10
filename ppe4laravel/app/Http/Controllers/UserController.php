@@ -13,6 +13,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $u= new User;
@@ -43,7 +47,7 @@ class UserController extends Controller
        $user->prenom=$request->input('prenom');
        $user->email = $request->input('email');
        $user->cp=$request->input('cp');
-       $user->ville=$request->input('ville');
+       $user->ville="Roubaix";
        if($request->input('password')!=$request->input('confirm-password'))
        {
            $request->session()->flash('error','Les mots de passe de correspondent pas');
