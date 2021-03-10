@@ -15,6 +15,8 @@ class CategorieController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('premiereCo');
+        $this->middleware('isAdmin')->only(['create','store','edit','update','destroy']);
     }
     public function index()
     {

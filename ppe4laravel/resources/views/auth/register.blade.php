@@ -52,25 +52,12 @@
                             </div>
 
 
-                        <div class="">
-                            <label for="password" class="block text-sm text-gray-00">{{ __('Mot de passe') }}</label>
-                                <input id="password" type="password" class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" name="password" required autocomplete="new-password" placeholder="Mot de Passe">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                        </div>
-
-                        <div class="">
-                            <label for="password-confirm" class="block text-sm text-gray-00">{{ __('Confirmer le mot de passe') }}</label>
-                                <input id="password-confirm" type="password" class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" name="password_confirmation" required autocomplete="new-password" placeHolder="Confirmer le mot de passe">
-                            </div>
+                        
                             <div class="">
-                            <label for="password-confirm" class="block text-sm text-gray-00">{{ __('Numéro de téléphone') }}</label>
+                                <label for="password-confirm" class="block text-sm text-gray-00">{{ __('Numéro de téléphone') }}</label>
                                 <input id="tel" type="tel" class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" name="tel" required autocomplete="new-password" placeHolder="Numéro de téléphone">
-                            </div>
+                        </div>
+                        
                             <br>
                            <label class="flex justify-start items-start">
                                 <div class="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">

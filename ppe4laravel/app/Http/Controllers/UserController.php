@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
     public function index()
     {
@@ -48,22 +48,28 @@ class UserController extends Controller
        $user->email = $request->input('email');
        $user->cp=$request->input('cp');
        $user->ville="Roubaix";
-       if($request->input('password')!=$request->input('confirm-password'))
+       $user->tel=$request->input('tel');
+       $user->premiereCo=0;
+       $user->cvConsultable=0;
+       if($request->input('password')!=$request->input('password_confirmation'))
        {
            $request->session()->flash('error','Les mots de passe de correspondent pas');
-           return redirect()->route('register');
+           return redirect()->route('register')->withInput();
        }
        $user->password=Hash::make($request->input('password'));
        if($request->has('notifications'))
        {
            $user->notif=1;
            $user->save();
+           $request->session()->flash('sucess',"L'utilisateur a bien été créé");
+           return redirect('/');
            
        }
        else
        {
            $user->notif=0;
            $user->save();
+           return redirect('/');
        }
     }
 
