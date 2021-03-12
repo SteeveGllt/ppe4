@@ -43,19 +43,7 @@
                             <i class="nc-icon nc-icon nc-paper-2"></i>
                             <p>Accueil</p>
                         </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Boite de réception</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Ajouter une offre</p>
-                        </a>
-                    </li>   
+                    </li>  
                     <li>
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
@@ -73,6 +61,14 @@
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer catégories</p>
                         </a>
+                    </li>
+                    <li>
+                     
+                        <a class="nav-link" href="{{route('poste.validation')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Validation ({{$nbValid}})</p>
+                        </a>
+                 
                     </li> 
                 </ul>
             </div>
