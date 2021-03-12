@@ -67,7 +67,7 @@
                      
                         <a class="nav-link" href="{{route('poste.validation')}}">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Validation ({{$nbValid}})</p>
+                            <p>Validation</p>
                         </a>
                  
                     </li> 
