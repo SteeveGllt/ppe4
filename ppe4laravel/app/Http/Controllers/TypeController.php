@@ -12,6 +12,11 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('premiereCo');
+    }
     public function index()
     {
         $tab = Type::all();

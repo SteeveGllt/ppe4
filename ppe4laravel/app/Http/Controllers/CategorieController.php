@@ -12,6 +12,12 @@ class CategorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('premiereCo');
+        $this->middleware('isAdmin')->only(['create','store','edit','update','destroy']);
+    }
     public function index()
     {
         $c= new Categorie;

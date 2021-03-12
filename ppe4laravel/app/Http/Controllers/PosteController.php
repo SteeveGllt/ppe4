@@ -19,6 +19,11 @@ class PosteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('premiereCo');
+    }
     public function index()
     {
         $poste = Poste::where('isValide', 1)->get();
