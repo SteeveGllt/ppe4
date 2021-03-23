@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('/img/favicon.ico')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>PPE4 LARAVEL</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -18,9 +18,8 @@
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script src="{{asset('/js/vicopo.js')}}"></script>
-     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-   
+     <script src="{{asset('/js/validate.min.js')}}"></script>
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +35,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="javascript:;" class="simple-text" style="color:yellow;">
-                      Nom site
+                      PPE4 LARAVEL
                     </a>
                 </div>
                 <ul class="nav">
@@ -45,19 +44,7 @@
                             <i class="nc-icon nc-icon nc-paper-2"></i>
                             <p>Accueil</p>
                         </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Boite de réception</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Ajouter une offre</p>
-                        </a>
-                    </li>   
+                    </li>  
                     <li>
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
@@ -75,6 +62,14 @@
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer catégories</p>
                         </a>
+                    </li>
+                    <li>
+                     
+                        <a class="nav-link" href="{{route('poste.validation')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Validation</p>
+                        </a>
+                 
                     </li> 
                 </ul>
             </div>

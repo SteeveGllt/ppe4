@@ -51,14 +51,13 @@
         </div>
     @endforeach
     </fieldset>
-    <form action="{{ route('poste.store') }}" method="post" enctype="multipart/form-data">
-    <div class="flex items-center justify-center bg-grey-lighter">
-    <div class="form-group">
-        <label  class="block text-sm block text-gray-600" for="exampleInputFile">File input</label>
+    
+    <div class="mt-2">
+        <label class=" block text-sm text-gray-600" for="cus_email">Upload</label>
         <input class="px-2 py-2 text-gray-700 rounded" type="file" name="profile_image" id="exampleInputFile">
     </div>
     {{ csrf_field() }}
-    </div>
+
     <div class="mt-4">
       <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Publier</button>
     </div>

@@ -21,7 +21,7 @@ Route::get('/', ('PosteController@index'));
 Route::resource('poste', 'PosteController');
 Route::resource('type', 'TypeController');
 Auth::routes();
-
+Route::post('password/new','ConfirmPasswordController@newPassword')->name('newPassword');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('user','UserController');
 
@@ -29,3 +29,5 @@ Route::resource('categorie','CategorieController');
 
 Route::get('site-register', 'SiteAuthController@siteRegister');
 Route::post('site-register', 'SiteAuthController@siteRegisterPost');
+Route::get('/validation', 'PosteController@validation')->name('poste.validation');
+Route::get('/validation{id}', 'PosteController@editValid')->name('poste.editValid');

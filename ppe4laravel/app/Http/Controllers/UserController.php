@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,6 +13,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
     public function index()
     {
         $u= new User;
@@ -37,7 +42,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $user= new User;
+       $user->nom=$request->input('name');
+       $user->prenom=$request->input('prenom');
+       $user->email = $request->input('email');
+       $user->cp=$request->input('cp');
+       $user->ville="Roubaix";
+       $user->tel=$request->input('tel');
+       $user->premiereCo=0;
+       $user->cvConsultable=0;
+       if($request->input('password')!=$request->input('password_confirmation'))
+       {
+           $request->session()->flash('error','Les mots de passe de correspondent pas');
+           return redirect()->route('register')->withInput();
+       }
+       $user->password=Hash::make($request->input('password'));
+       if($request->has('notifications'))
+       {
+           $user->notif=1;
+           $user->save();
+           $request->session()->flash('sucess',"L'utilisateur a bien été créé");
+           return redirect('/');
+           
+       }
+       else
+       {
+           $user->notif=0;
+           $user->save();
+           return redirect('/');
+       }
     }
 
     /**
