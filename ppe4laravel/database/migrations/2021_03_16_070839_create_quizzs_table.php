@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArchivesTables extends Migration
+class CreateQuizzsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateArchivesTables extends Migration
      */
     public function up()
     {
-        Schema::create('archives_tables', function (Blueprint $table) {
+        Schema::create('quizzs', function (Blueprint $table) {
             $table->id();
+            $table->string('titre');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateArchivesTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archives_tables');
+        Schema::dropIfExists('quizzs');
     }
 }
