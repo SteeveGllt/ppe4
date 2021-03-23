@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\http\request;
 
 class LoginController extends Controller
 {
@@ -37,4 +38,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    protected function validateLogin(Request $request) 
+
+    { 
+
+        $this->validate($request, [ 
+
+            'g-recaptcha-response' => 'required|captcha', 
+
+        ]); 
+
+    } 
 }

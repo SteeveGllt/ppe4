@@ -126,7 +126,7 @@ class UserController extends Controller
         }
         catch(\PDOException $u)
         {
-        $request->session()->flash('error','L utilisateur ne peut être supprimé, des messages ou postes lui sont attribués');
+        $request->session()->flash('error',"L' utilisateur ne peut être supprimé, des messages ou postes lui sont attribués");
         return redirect()->route('user.index');
         }
     }

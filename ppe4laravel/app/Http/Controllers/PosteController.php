@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PosteController extends Controller
 {
@@ -25,8 +26,9 @@ class PosteController extends Controller
     }
     public function index()
     {
-        $tab = Poste::all();
-        return view('accueil', compact('tab'));
+        $poste = Poste::where('isValide', 1)->get();
+        return view('accueil', compact('poste'));
+        
     }
 
     /**
@@ -74,13 +76,13 @@ class PosteController extends Controller
             $p->ville = $request->input('ville');
             $p->nomEntreprise = $request->input('nomEntreprise');
             $p->pdf = $filenametostore;
-            $p->isValide = 1;
+            $p->isValide = 0;
             $p->type_id = $request->input('type');
             $p->categorie_id = $request->input('categorie');
             $p->user_id = Auth::user()->id;
             $p->save();
       
-            return redirect()->route('poste.index')->with('success', "Poste publié.");
+            return redirect()->route('poste.index')->with('success', "Poste en attente.");
         }
         else
         {
@@ -92,13 +94,13 @@ class PosteController extends Controller
             $p->ville = $request->input('ville');
             $p->nomEntreprise = $request->input('nomEntreprise');
             $p->pdf = "";
-            $p->isValide = 1;
+            $p->isValide = 0;
             $p->type_id = $request->input('type');
             $p->categorie_id = $request->input('categorie');
             $p->user_id = Auth::user()->id;
             $p->save();
       
-            return redirect()->route('poste.index')->with('success', "Poste publié.");
+            return redirect()->route('poste.index')->with('success', "Poste en attente.");
         }
 
     }
@@ -140,6 +142,8 @@ class PosteController extends Controller
     {
         if($request->hasFile('profile_image'))
         {
+            $p = Poste::find($poste->id);
+            Storage::delete('public/profile_images/'.$p->pdf);
             
             $filenamewithextension = $request->file('profile_image')->getClientOriginalName();
 
@@ -153,8 +157,9 @@ class PosteController extends Controller
 
             $request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
             
-        $p = Poste::find($poste->id);
         
+        
+
         $p->intitule = $request->input('intitule');
         $p->description = $request->input('description');
         $p->nomEntreprise = $request->input('nomEntreprise');
@@ -173,7 +178,6 @@ class PosteController extends Controller
             $p->intitule = $request->input('intitule');
             $p->description = $request->input('description');
             $p->nomEntreprise = $request->input('nomEntreprise');
-            $p->pdf = "";
             $p->ville = $request->input('ville');
             $p->type_id = $request->input('type');
             $p->categorie_id = $request->input('categorie');
@@ -193,6 +197,21 @@ class PosteController extends Controller
         $p = Poste::find($poste->id);
         Storage::delete('public/profile_images/'.$p->pdf);
         $p->delete($p);
-        return redirect()->route('poste.index');
+        return redirect()->route('poste.index')->with('success', "Poste supprimé.");
+    }
+
+    public function validation()
+    {
+        $tab = Poste::where('isValide', 0)->get();
+        return view('PosteValidation', compact('tab'));
+    }
+
+    public function editValid($id)
+    {
+        $p = Poste::find($id);
+        $p->isValide = 1;
+        $p->save();
+        return redirect()->route('poste.validation')->with('success', "Poste accepté.");
+
     }
 }
