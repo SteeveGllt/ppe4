@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin')->only(['create','store','edit','update','destroy']);
         $this->middleware('premiereCo');
     }
 

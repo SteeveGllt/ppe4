@@ -48,7 +48,7 @@
                     <li>
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Gérer utilisateurs</p>
+                            <p>Gérer utilisateurs {{$nbValid}}</p>
                         </a>
                     </li> 
                      <li>

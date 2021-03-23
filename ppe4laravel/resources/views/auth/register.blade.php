@@ -32,7 +32,7 @@
                           <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="code" name="cp" type="text" required="" placeholder="Code Postal">
                           <br>
                           <label class="block text-sm text-gray-00" for="cus_name">Ville</label>
-                          <input readonly="readonly" id="city" name="ville" class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" placeholder="Ville">
+                          <input readonly="readonly" id="ville" name="ville" class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" placeholder="Ville">
                           <ul class="list-group">
                           <li class="list-group-item"data-vicopo="#ville, #code" data-vicopo-click='{"#code": "code", "#ville": "ville"}'>
                             <strong data-vicopo-code-postal></strong>
