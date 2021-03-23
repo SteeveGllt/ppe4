@@ -18,7 +18,9 @@
     <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script src="{{asset('/js/vicopo.js')}}"></script>
-     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+   
 </head>
 
 <body>
@@ -293,6 +295,9 @@
 <script src="{{asset('/js/light-bootstrap-dashboard.js?v=2.0.0')}}" type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('/js/demo.js')}}"></script>
+
+@section('script')
+@show
 </body>
 
 </html>

@@ -26,3 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('user','UserController');
 
 Route::resource('categorie','CategorieController');
+
+Route::get('site-register', 'SiteAuthController@siteRegister');
+Route::post('site-register', 'SiteAuthController@siteRegisterPost');
