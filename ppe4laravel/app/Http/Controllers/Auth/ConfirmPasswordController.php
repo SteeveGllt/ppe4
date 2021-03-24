@@ -37,10 +37,4 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
-    public function newPassword(Request $request)
-    {
-        $user=Auth::user();
-        $user->password=$request->input('password');
-        $user->save();
-    }
 }
