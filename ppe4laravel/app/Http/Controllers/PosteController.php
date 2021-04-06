@@ -169,7 +169,7 @@ class PosteController extends Controller
         $p->categorie_id = $request->input('categorie');
         
         $p->save();
-        return redirect()->route('poste.index');
+        return redirect()->route('poste.index')->with('success', "Poste modifié.");
         }
         else
         {
@@ -182,7 +182,7 @@ class PosteController extends Controller
             $p->type_id = $request->input('type');
             $p->categorie_id = $request->input('categorie');
             $p->save();
-            return redirect()->route('poste.index');
+            return redirect()->route('poste.index')->with('success', "Poste modifié.");
         }
     }
 

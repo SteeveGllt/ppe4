@@ -53,6 +53,7 @@
     <div class="mt-2">
         <label class=" block text-sm text-gray-600" for="cus_email">Upload</label>
         <input class="px-2 py-2 text-gray-700 rounded" type="file" name="profile_image" id="exampleInputFile" value="{{$ligne->pdf}}">
+        <p class="block text-sm text-gray-00">Fichier enregistré : {{$p->pdf}}</p>
     </div>
     {{ csrf_field() }}
 
