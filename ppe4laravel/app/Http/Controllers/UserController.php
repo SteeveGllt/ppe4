@@ -92,21 +92,32 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $u =route::user($id);     
+        return view ('edit', compact('u'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $u=route::user($id);
+        $u -> nom = $request -> input('nom');
+        $u -> prenom = $request -> input('prenom');
+        $u -> mail  = $request -> input('mail');
+        $u -> password = $request -> input('password');
+        $u -> ville = $request -> input('ville');
+        $u -> cp = $request -> input('cp');
+        $u -> tel = $request -> input('tel');
+        $u -> notif = $request -> input('notif');
+        $u->save();
+        return redirect()->route('user.edit');  
     }
 
     /**
