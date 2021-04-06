@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
+        $this->middleware('isAdmin');
+        $this->middleware('premiereCo');
     }
     public function index()
     {
@@ -47,16 +49,16 @@ class UserController extends Controller
        $user->prenom=$request->input('prenom');
        $user->email = $request->input('email');
        $user->cp=$request->input('cp');
-       $user->ville="Roubaix";
+       $user->ville=$request->input('ville');
        $user->tel=$request->input('tel');
        $user->premiereCo=0;
        $user->cvConsultable=0;
-       if($request->input('password')!=$request->input('password_confirmation'))
+       $characters = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+       for($i=0;$i<9;$i++)
        {
-           $request->session()->flash('error','Les mots de passe de correspondent pas');
-           return redirect()->route('register')->withInput();
+            $password .= ($i%2) ? strtoupper($characters[array_rand($characters)]) : $characters[array_rand($characters)];
        }
-       $user->password=Hash::make($request->input('password'));
+       $user->password=Hash::make($request->input($password));
        if($request->has('notifications'))
        {
            $user->notif=1;
@@ -124,7 +126,7 @@ class UserController extends Controller
         }
         catch(\PDOException $u)
         {
-        $request->session()->flash('error','L utilisateur ne peut être supprimé, des messages ou postes lui sont attribués');
+        $request->session()->flash('error',"L' utilisateur ne peut être supprimé, des messages ou postes lui sont attribués");
         return redirect()->route('user.index');
         }
     }

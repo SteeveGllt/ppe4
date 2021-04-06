@@ -25,5 +25,6 @@ class LoginSuccess
      */
     public function handle($event)
     {
+        
     }
 }

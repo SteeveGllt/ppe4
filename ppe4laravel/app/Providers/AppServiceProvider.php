@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $nbValid = Poste::where('isValide', 0)->get();
+        $nbValid =Poste::where('isValide', 0)->get(); 
         \View::share('nbValid',count($nbValid));
     }
 }
