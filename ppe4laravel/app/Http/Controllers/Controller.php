@@ -16,6 +16,5 @@ class Controller extends BaseController
     public function __construct(){
         $nbValid = Poste::where('isValide', 0)->get();
         \View::share('nbValid',count($nbValid));
-        
     }
 }

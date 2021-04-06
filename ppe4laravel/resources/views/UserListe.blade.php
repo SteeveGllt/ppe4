@@ -26,6 +26,30 @@
     @foreach ($tab as $ligne)
 
                             <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+                                <div class="modal fade" id="idm{{$ligne->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        <div class="modal-body">
+                                            Voulez-vous vraiment supprimer l'offre ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                <form action="{{route('user.destroy',['user'=> $ligne])}}" method="post">
+			                                        @csrf
+			                                        @method('delete')
+                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+			                                        </form>
+       
+                                        </div>
+                                    </div>
+            </div>
+</div>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$ligne->nom}}</span>
@@ -74,11 +98,8 @@
                                         </a>
                                         </div>
                                         <div class="w-4 mr-2 transform hover:scale-110">  
-                                        <form id ="test{{$ligne->id}}" action="{{route('user.destroy',['user'=>$ligne->id])}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        </form>
-                                        <a href="#" onclick='document.getElementById("test{{$ligne->id}}").submit()' class="hover:text-red-500">
+                                      
+                                        <a href="#" onclick='document.getElementById("test{{$ligne->id}}").submit()' class="hover:text-red-500" data-toggle="modal" data-target="#idm{{$ligne->id}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>

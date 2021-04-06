@@ -11,6 +11,7 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- CSS Files -->
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('/css/light-bootstrap-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
@@ -39,38 +40,43 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li class="nav-item {{request()->routeis('poste.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('poste.index')}}">
                             <i class="nc-icon nc-icon nc-paper-2"></i>
                             <p>Accueil</p>
                         </a>
                     </li>  
-                    <li>
+                    <li class="nav-item {{request()->routeis('user.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer utilisateurs</p>
                         </a>
                     </li> 
-                     <li>
+                     <li class="nav-item {{request()->routeis('type.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('type.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer types</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{request()->routeis('categorie.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('categorie.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Gérer catégories</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{request()->routeis('poste.validation') ? 'active' : ''}}">
                      
                         <a class="nav-link" href="{{route('poste.validation')}}">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Validation</p>
+                            <p>Validation ({{$nbValid}})</p>
                         </a>
-                 
-                    </li> 
+                    </li>
+                    <li class="nav-item {{request()->routeis('message.index') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('message.index')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Messagerie</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -154,17 +160,23 @@
             <!-- End Navbar -->
             
             @if(request()->session()->get('success'))
-        <div class="alert alert-dismissible alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          {{request()->session()->get('success')}}
-        </div>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative alert" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline"> {{request()->session()->get('success')}}</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </span>
+            </div>
       
       @endif
        @if(request()->session()->get('error'))
-        <div class="alert alert-dismissible alert-danger">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          {{request()->session()->get('error')}}
-        </div>
+       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert" role="alert">
+                <strong class="font-bold">Erreur!</strong>
+                <span class="block sm:inline"> {{request()->session()->get('error')}}</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </span>
+            </div>
       
       @endif
           
