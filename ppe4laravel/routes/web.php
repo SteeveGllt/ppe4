@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/', ('PosteController@index'));
 Route::resource('poste', 'PosteController');
 Route::resource('type', 'TypeController');
+Route::resource('message', 'MessageController');
 Auth::routes();
 //Route::post('password/new','ConfirmPasswordController@newPassword')->name('newPassword');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,4 +32,8 @@ Route::post('site-register', 'SiteAuthController@siteRegisterPost');
 Route::get('/validation', 'PosteController@validation')->name('poste.validation');
 Route::get('/validation{id}', 'PosteController@editValid')->name('poste.editValid');
 Route::resource('quizz','QuizzController');
+
+Route::get('importExportView', 'MyController@importExportView')->name('importCsv');
+Route::get('export', 'MyController@export')->name('export');
+Route::post('import', 'MyController@import')->name('import');
 
