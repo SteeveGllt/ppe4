@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('question/{id}','QuizzController@getQuestionQuizz');
 Route::post('reponse/{id}/','QuizzController@postAnswer');
 Route::get('allquestion','QuizzController@getAllQuizz');
+Route::get('posteApi','ApiController@listPoste');

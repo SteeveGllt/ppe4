@@ -20,8 +20,8 @@
       <input class="w-full px-3 py-1 text-gray-700 bg-gray-200 rounded" id="cus_email" name="intitule" type="text" required="" placeholder="Intitulé" value="{{$p->intitule}}">
     </div>
     <div class="mt-2">
-      <label class=" block text-sm text-gray-600" for="cus_email">Description</label>
-      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="description" type="text" required="" placeholder="Description" value="">{{$p->description}}</textarea>
+      <label class=" block text-sm text-gray-600" for="editor">Description</label>
+      <textarea class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="editor" name="description" type="text" required="" placeholder="Description" value="">{!!$p->description!!}</textarea>
     </div>
     <div>
     <p class="text-gray-800 font-bold">Catégorie</p>
@@ -63,4 +63,13 @@
   </form>
 </div>
 {!! Form::close() !!}
+@stop
+@section('script')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @stop
