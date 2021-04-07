@@ -55,7 +55,7 @@
         </div>
         <div class="mt-2">
             <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="#">{{$ligne->nomEntreprise}} / {{$ligne->categorie->libelle}} / {{$ligne->type->libelle}}</a>
-            <p class="mt-2 text-gray-600">{{$ligne->description}}</p>
+            <p class="mt-2 text-gray-600">{!!$ligne->description!!}</p>
         </div>
         @if($ligne->pdf == true)
         
@@ -63,7 +63,7 @@
         <button class="bg-grey-light hover:bg-grey text-grey-darkest font-bold py-2 px-1 rounded inline-flex items-center">
             
             <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-            <span>Download</span>
+            <span>Télécharger le PDF</span>
             
         </button>
         </a>
