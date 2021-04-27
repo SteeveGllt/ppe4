@@ -58,7 +58,7 @@ class UserController extends Controller
        {
             $password .= ($i%2) ? strtoupper($characters[array_rand($characters)]) : $characters[array_rand($characters)];
        }
-       $user->password=Hash::make($request->input($password));
+       $user->password=Hash::make($password);
        if($request->has('notifications'))
        {
            $user->notif=1;
