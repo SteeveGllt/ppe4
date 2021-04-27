@@ -17,7 +17,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin');
+        $this->middleware('isAdmin')->except('profil','edit','update');
         $this->middleware('premiereCo');
     }
     public function index()
