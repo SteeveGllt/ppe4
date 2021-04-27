@@ -42,4 +42,4 @@ Route::get('/mesoffres/', 'PosteController@mesOffres')->name('poste.offres');
 Route::get('importExportView', 'MyController@importExportView')->name('importCsv');
 Route::get('export', 'MyController@export')->name('export');
 Route::post('import', 'MyController@import')->name('import');
-
+Route::resource('message','MessageController');

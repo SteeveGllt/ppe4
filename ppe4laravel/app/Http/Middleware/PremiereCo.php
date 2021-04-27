@@ -15,7 +15,7 @@ class PremiereCo
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->premiereCo==1)
+        if(Auth::user()->premiereCo==0)
         {
         return $next($request);
         }
