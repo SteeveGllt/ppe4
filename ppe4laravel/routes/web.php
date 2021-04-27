@@ -24,7 +24,10 @@ Route::resource('message', 'MessageController');
 Auth::routes();
 //Route::post('password/new','ConfirmPasswordController@newPassword')->name('newPassword');
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('user','UserController');
+
+Route::get('/profil', 'UserController@profil')->name('user.profil');
 Route::resource('categorie','CategorieController');
 Route::resource('message','MessageController');
 Route::get('site-register', 'SiteAuthController@siteRegister');

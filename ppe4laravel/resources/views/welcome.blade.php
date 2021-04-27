@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('/img/favicon.ico')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>PPE4 LARAVEL</title>
+    <title>Emploi Sio Dole</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -36,7 +36,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="javascript:;" class="simple-text" style="color:yellow;">
-                      PPE4 LARAVEL
+                      Emploi Sio Dole
                     </a>
                 </div>
                 <ul class="nav">
@@ -90,7 +90,6 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg colorperso" color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo" style="color:green;">Template</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -127,7 +126,7 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="{{route('user.profil')}}">
                                     <span class="no-icon">Profil</span>
                                 </a>
                             </li>
