@@ -49,7 +49,7 @@
                     <li class="nav-item {{request()->routeis('user.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('user.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
-                            <p>Gérer utilisateurs {{$nbValid}}</p>
+                            <p>Gérer utilisateurs</p>
                         </a>
                     </li> 
                      <li class="nav-item {{request()->routeis('type.index') ? 'active' : ''}}">
@@ -75,6 +75,12 @@
                         <a class="nav-link" href="{{route('message.index')}}">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Messagerie</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{request()->routeis('poste.offres') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('poste.offres')}}">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Mes offres</p>
                         </a>
                     </li>
                 </ul>
@@ -287,6 +293,7 @@
 
 </body>
 <!--   Core JS Files   -->
+<script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
 <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('/js/core/popper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -302,6 +309,7 @@
 <script src="{{asset('/js/light-bootstrap-dashboard.js?v=2.0.0')}}" type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('/js/demo.js')}}"></script>
+
 
 @section('script')
 @show

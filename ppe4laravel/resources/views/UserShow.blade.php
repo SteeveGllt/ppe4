@@ -13,7 +13,6 @@
     <th>nom</th>
     <th>prenom </th>
     <th>email</th>
-    <th>Mot De Passe</th>
     <th>Ville</th>
     <th>Code Postal</th>
     <th>isAdmin</th>
@@ -30,7 +29,6 @@
     <td>{{$u ->nom}}</td>
     <td> {{$u->prenom}} </td>
     <td>{{$u->email}} </td>
-    <td>{{$u ->password}}</td>
     <td> {{$u->ville}} </td>
     <td>{{$u->cp}} </td>
     <td>{{$u ->isAdmin}}</td>

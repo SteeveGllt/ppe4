@@ -22,7 +22,7 @@ class User extends Authenticatable
     }
     public function postesPostuler()
     {
-        return $this->belongsTomany('App\Poste');
+        return $this->belongsToMany('App\Poste');
     }
     use Notifiable;
 
@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nom', 'prenom', 'email', 'password',
     ];
 
     /**

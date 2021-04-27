@@ -114,7 +114,9 @@
                 </div>
             </div>
         </div>
-<a href="{{route('user.create')}}" class="flex justify-center mt-3"><button type="submit" class="btn btn-primary" name="btnCreate">Créer</button></a>
+<a href="{{route('export')}}" class="flex justify-center mt-3"><button type="submit" class="btn btn-warning" name="btnExport">Exporter les utilisateurs vers un fichier excel</button></a>
+<a href="{{route('register')}}" class="flex justify-center mt-3"><button type="submit" class="btn btn-primary" name="btnCreate">Créer un utilisateur</button></a>
+<a href="{{route('importCsv')}}" class="flex justify-center mt-3"><button type="submit" class="btn btn-primary" name="btnImport">Importer Nouveau utilisateur via fichier CSV</button></a>
 
 <!-- component
 <table class="table table-hover">

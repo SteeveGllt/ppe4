@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Poste;
 use App\Type;
 use App\Categorie;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Validator;
 use Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\DB;
 
 class PosteController extends Controller
@@ -52,7 +54,28 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('profile_image'))
+        $postData = $request->only('profile_image');
+        $file = $postData['profile_image'];
+
+        $fileArray = array('pdf' => $file);
+
+    // Tell the validator that this file should be an image
+    $rules = array(
+      'pdf' => 'mimes:pdf|max:10000' // max 10000kb
+    );
+     // Now pass the input and rules into the validator
+     $validator = Validator::make($fileArray, $rules);
+    // Check to see if validation fails or passes
+    if ($validator->fails())
+    {
+          // Redirect or return json to frontend with a helpful message to inform the user 
+          // that the provided file was not an adequate type
+         
+          //return response()->json(['error' => $validator->errors()->getMessages()], 400);
+          return redirect()->route('poste.create')->with('error', "Le format du fichier doit être en pdf.");
+
+    } 
+        else if($request->hasFile('profile_image'))
         {
             $filenamewithextension = $request->file('profile_image')->getClientOriginalName();
 
@@ -140,8 +163,30 @@ class PosteController extends Controller
      */
     public function update(Request $request, Poste $poste)
     {
-        if($request->hasFile('profile_image'))
+        $postData = $request->only('profile_image');
+        $file = $postData['profile_image'];
+
+        $fileArray = array('pdf' => $file);
+
+    // Tell the validator that this file should be an image
+    $rules = array(
+      'pdf' => 'mimes:pdf|max:10000' // max 10000kb
+    );
+     // Now pass the input and rules into the validator
+     $validator = Validator::make($fileArray, $rules);
+    // Check to see if validation fails or passes
+    if ($validator->fails())
+    {
+          // Redirect or return json to frontend with a helpful message to inform the user 
+          // that the provided file was not an adequate type
+         
+          //return response()->json(['error' => $validator->errors()->getMessages()], 400);
+          return redirect()->route('poste.create')->with('error', "Le format du fichier doit être en pdf.");
+
+    } 
+       else if($request->hasFile('profile_image'))
         {
+            
             $p = Poste::find($poste->id);
             Storage::delete('public/profile_images/'.$p->pdf);
             
@@ -213,5 +258,45 @@ class PosteController extends Controller
         $p->save();
         return redirect()->route('poste.validation')->with('success', "Poste accepté.");
 
+    }
+
+    public function postuler($id, Request $request)
+    {
+        try{
+            $user = User::find(Auth::user()->id);
+            $poste = Poste::find($id);
+            $user->postesPostuler()->attach($poste);
+            $request->session()->flash('success',"Vous êtes intéressé(e) par l'offre");
+                return redirect()->route('poste.index');
+
+        }
+        catch(\PDOException $user)
+        {
+            if($user->getcode() == "23000")
+            {
+                $request->session()->flash('error',"Cette offre vous intéresse déjà");
+                return redirect()->route('poste.index');
+            }
+            
+        }
+
+
+    }
+    public function unPostuler($id, Request $request)
+    {
+  
+            $user = User::find(Auth::user()->id);
+            $poste = Poste::find($id);
+            $user->postesPostuler()->detach($poste);
+            $request->session()->flash('success',"Vous n'êtes plus intéressé(e) par l'offre");
+                return redirect()->route('poste.index');
+
+    }
+    public function mesOffres()
+    {
+        $user = Auth::user();
+        $test = $user->postesPostuler;
+        return view('mesOffres', compact('test'));
+        
     }
 }
