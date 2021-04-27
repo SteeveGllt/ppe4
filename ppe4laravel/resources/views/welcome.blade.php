@@ -35,51 +35,51 @@
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="javascript:;" class="simple-text" style="color:yellow;">
-                      PPE4 LARAVEL
+                    <a href="javascript:;" class="simple-text" style="color:white;">
+                      FIND YOUR JOB
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item {{request()->routeis('poste.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('poste.index')}}">
-                            <i class="nc-icon nc-icon nc-paper-2"></i>
+                            <i class="nc-icon nc-icon nc-tv-2"></i>
                             <p>Accueil</p>
                         </a>
                     </li>  
                     <li class="nav-item {{request()->routeis('user.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('user.index')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-grid-45"></i>
                             <p>Gérer utilisateurs</p>
                         </a>
                     </li> 
                      <li class="nav-item {{request()->routeis('type.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('type.index')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-grid-45"></i>
                             <p>Gérer types</p>
                         </a>
                     </li>
                     <li class="nav-item {{request()->routeis('categorie.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('categorie.index')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-grid-45"></i>
                             <p>Gérer catégories</p>
                         </a>
                     </li>
                     <li class="nav-item {{request()->routeis('poste.validation') ? 'active' : ''}}">
                      
                         <a class="nav-link" href="{{route('poste.validation')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-check-2"></i>
                             <p>Validation ({{$nbValid}})</p>
                         </a>
                     </li>
                     <li class="nav-item {{request()->routeis('message.index') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('message.index')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-chat-round"></i>
                             <p>Messagerie</p>
                         </a>
                     </li>
                     <li class="nav-item {{request()->routeis('poste.offres') ? 'active' : ''}}">
                         <a class="nav-link" href="{{route('poste.offres')}}">
-                            <i class="nc-icon nc-bell-55"></i>
+                            <i class="nc-icon nc-favourite-28"></i>
                             <p>Mes offres</p>
                         </a>
                     </li>
@@ -90,7 +90,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg colorperso" color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo" style="color:green;">Template</a>
+                
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -98,32 +98,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-palette"></i>
-                                    <span class="d-lg-none">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="dropdown nav-item">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-planet"></i>
-                                    <span class="notification">5</span>
-                                    <span class="d-lg-none">Notification</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Notification 1</a>
-                                    <a class="dropdown-item" href="#">Notification 2</a>
-                                    <a class="dropdown-item" href="#">Notification 3</a>
-                                    <a class="dropdown-item" href="#">Notification 4</a>
-                                    <a class="dropdown-item" href="#">Another notification</a>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Search</span>
-                                </a>
-                            </li>
+                        
+                           
+                           
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
