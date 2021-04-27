@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin');
+        $this->middleware('isAdmin')->except('profil','edit','update');
         $this->middleware('premiereCo');
     }
     public function index()
@@ -31,9 +32,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function profil()
     {
-        //
+       $u = User::find(Auth::user()->id);
+       return view('userProfil',compact('u'));
     }
 
     /**
@@ -58,7 +60,7 @@ class UserController extends Controller
        {
             $password .= ($i%2) ? strtoupper($characters[array_rand($characters)]) : $characters[array_rand($characters)];
        }
-       $user->password=Hash::make($request->input($password));
+       $user->password=Hash::make($password);
        if($request->has('notifications'))
        {
            $user->notif=1;
@@ -89,13 +91,13 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\User  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $u =route::user($id);     
-        return view ('edit', compact('u'));
+        $u = User::find(Auth::user()->id);  
+        return view ('user\edit', compact('u'));
     }
 
     /**
@@ -105,19 +107,17 @@ class UserController extends Controller
      * @param  \App\User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $u=route::user($id);
+        $u = User::find(Auth::user()->id);
         $u -> nom = $request -> input('nom');
         $u -> prenom = $request -> input('prenom');
-        $u -> mail  = $request -> input('mail');
-        $u -> password = $request -> input('password');
+        $u -> email  = $request -> input('mail');
         $u -> ville = $request -> input('ville');
         $u -> cp = $request -> input('cp');
         $u -> tel = $request -> input('tel');
-        $u -> notif = $request -> input('notif');
         $u->save();
-        return redirect()->route('user.edit');  
+        return redirect()->route('user.profil');  
     }
 
     /**

@@ -23,6 +23,8 @@ class UsersImport implements ToModel, WithHeadingRow
             'email'=>$row['email'],
             
             'password'=> \Hash::make('admin'),
+            
+            'premiereCo' =>0,
         ]);
     }
 }

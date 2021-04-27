@@ -24,7 +24,10 @@ Route::resource('message', 'MessageController');
 Auth::routes();
 //Route::post('password/new','ConfirmPasswordController@newPassword')->name('newPassword');
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('user','UserController');
+
+Route::get('/profil', 'UserController@profil')->name('user.profil');
 Route::resource('categorie','CategorieController');
 Route::resource('message','MessageController');
 Route::get('site-register', 'SiteAuthController@siteRegister');
@@ -39,4 +42,4 @@ Route::get('/mesoffres/', 'PosteController@mesOffres')->name('poste.offres');
 Route::get('importExportView', 'MyController@importExportView')->name('importCsv');
 Route::get('export', 'MyController@export')->name('export');
 Route::post('import', 'MyController@import')->name('import');
-
+Route::resource('message','MessageController');

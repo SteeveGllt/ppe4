@@ -31,6 +31,6 @@ class MyController extends Controller
     {
         Excel::import(new UsersImport,request()->file('file'));
            
-        return back();
+         return redirect()->route('user.index')->with('success', "Les utilisateurs ont bien été créé.");
     }
 }
