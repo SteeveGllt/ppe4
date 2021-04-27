@@ -31,4 +31,5 @@ Route::post('site-register', 'SiteAuthController@siteRegisterPost');
 Route::get('/validation', 'PosteController@validation')->name('poste.validation');
 Route::get('/validation{id}', 'PosteController@editValid')->name('poste.editValid');
 Route::resource('quizz','QuizzController');
+Route::resource('message','MessageController');
 
