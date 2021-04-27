@@ -90,10 +90,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg colorperso" color-on-scroll="500">
                 <div class="container-fluid">
-<<<<<<< HEAD
                 
-=======
->>>>>>> 51b8a527d72e0a93c71ed93eebbf5995a279bd6f
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
