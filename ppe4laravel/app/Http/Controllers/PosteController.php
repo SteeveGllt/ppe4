@@ -54,17 +54,23 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        $postData = $request->only('profile_image');
-        $file = $postData['profile_image'];
-
-        $fileArray = array('pdf' => $file);
+        
+        $validatedData = $request->validate([
+            'nomEntreprise' => 'required',
+            'ville' => 'required',
+            'intitule' => 'required',
+            'description' => 'required',
+            'categorie' => 'required',
+            'type' => 'required',
+            'profile_image' => 'mimes:pdf', // max 10000kb
+        ]);
 
     // Tell the validator that this file should be an image
-    $rules = array(
+    /*$rules = array(
       'pdf' => 'mimes:pdf|max:10000' // max 10000kb
     );
      // Now pass the input and rules into the validator
-     $validator = Validator::make($fileArray, $rules);
+     $validator = Validator::make($request->all());
     // Check to see if validation fails or passes
     if ($validator->fails())
     {
@@ -75,7 +81,7 @@ class PosteController extends Controller
           return redirect()->route('poste.create')->with('error', "Le format du fichier doit être en pdf.");
 
     } 
-        else if($request->hasFile('profile_image'))
+        else */ if($request->hasFile('profile_image'))
         {
             $filenamewithextension = $request->file('profile_image')->getClientOriginalName();
 
@@ -163,28 +169,16 @@ class PosteController extends Controller
      */
     public function update(Request $request, Poste $poste)
     {
-        $postData = $request->only('profile_image');
-        $file = $postData['profile_image'];
-
-        $fileArray = array('pdf' => $file);
-
-    // Tell the validator that this file should be an image
-    $rules = array(
-      'pdf' => 'mimes:pdf|max:10000' // max 10000kb
-    );
-     // Now pass the input and rules into the validator
-     $validator = Validator::make($fileArray, $rules);
-    // Check to see if validation fails or passes
-    if ($validator->fails())
-    {
-          // Redirect or return json to frontend with a helpful message to inform the user 
-          // that the provided file was not an adequate type
-         
-          //return response()->json(['error' => $validator->errors()->getMessages()], 400);
-          return redirect()->route('poste.create')->with('error', "Le format du fichier doit être en pdf.");
-
-    } 
-       else if($request->hasFile('profile_image'))
+        $validatedData = $request->validate([
+            'nomEntreprise' => 'required',
+            'ville' => 'required',
+            'intitule' => 'required',
+            'description' => 'required',
+            'categorie' => 'required',
+            'type' => 'required',
+            'profile_image' => 'mimes:pdf', // max 10000kb
+        ]);
+    if($request->hasFile('profile_image'))
         {
             
             $p = Poste::find($poste->id);
